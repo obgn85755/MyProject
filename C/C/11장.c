@@ -1,22 +1,71 @@
 //11
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <time.h>
+int k;
 void merge(int *A,int *B, int *C, int size);
 int main()
-{	int i;
-	int A[4]={2,5,7,8};
-	int B[4]={1,3,4,6};
+{	int i,j,m,temp;int x=0;
+	int A[4]={0};
+	int B[4]={0};
 	int C[8]={0};
-	merge(A,B,C,8);
-
-	for(i=0;i<8;i++)
+	    
+	srand((unsigned)time(0));
+	for(m=0;m<4;m++)
 	{
-		printf("%d ", C[i]);
+		A[m]=rand()%10;
+		for(x=0;x<m;x++)
+			if(A[m]==A[x])
+				m--;
 	}
+	for(m=0;m<4;m++)
+	{
+		B[m]=rand()%10;
+		for(x=0;x<m;x++)
+			if(B[m]==B[x])
+				m--;
+	}
+	for(i=0;i<3;i++)// A정렬
+	{
+		for(j=i+1;j<4;j++)
+		{
+			if(A[i]>A[j])
+			{
+				temp=A[i];
+				A[i]=A[j];
+				A[j]=temp;
+			}
+		}
+	}
+	for(i=0;i<3;i++)// B정렬
+	{
+		for(j=i+1;j<4;j++)
+		{
+			if(B[i]>B[j])
+			{
+				temp=B[i];
+				B[i]=B[j];
+				B[j]=temp;
+			}
+		}
+	}
+
+
+
+	merge(A,B,C,8);
+	for(i=0;i<4;i++)
+		printf("%d ",A[i]);
+	printf("\n");
+	for(i=0;i<4;i++)
+		printf("%d ", B[i]);
+	printf("\n");
+for(i=0;i<k;i++)
+		printf("%d ", C[i]);
+	printf("\n");
 }
 void merge(int *A,int *B, int *C, int size)
 {	
-	int k=0,i=0,j=0;int a,b;
+	int i=0,j=0;int a,b;
 	for(k=0;k<size;k++)
 	{
 		if(A[i]>B[j])
