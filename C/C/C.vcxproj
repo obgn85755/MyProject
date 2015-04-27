@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="게임.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{32738E08-0664-469F-9C58-D8AF3848D6E1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

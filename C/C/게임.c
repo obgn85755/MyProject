@@ -118,7 +118,7 @@ void move(void)		//이동함수
 			continue;
 
 
-		if(chance>=6)	//10% 확률로 보물상자 함수 호출
+		if(chance>=10)	//10% 확률로 보물상자 함수 호출
 		{
 			treasure();
 			continue;

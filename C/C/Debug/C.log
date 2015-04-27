@@ -1,4 +1,4 @@
-﻿빌드 시작: 2015-04-27 오후 3:50:56
+﻿빌드 시작: 2015-04-27 오후 4:00:04
      1>2 노드의 "C:\Users\user\MyProject\MyProject\C\C\C.vcxproj" 프로젝트(build 대상)입니다.
      1>InitializeBuildStatus:
          "AlwaysCreate"이(가) 지정되었기 때문에 "Debug\C.unsuccessfulbuild"을(를) 만들고 있습니다.
@@ -33,4 +33,4 @@
 
 빌드했습니다.
 
-경과 시간: 00:00:03.16
+경과 시간: 00:00:00.75
