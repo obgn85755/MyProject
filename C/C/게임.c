@@ -19,6 +19,8 @@ void game_over(void);	//게임 오버 함수
 void treasure(void);	//보물상자 함수
 void inventory(void);	//인벤토리 함수
 void HP_recover(int HP);//체력 회복 함수
+void getRedPotion(void);	//레드포션 얻는 함수
+void getBluePotion(void);	//블루포션 얻는 함수
 
 int item[10]={0};	//인벤토리 배열
 int pc_HP=30;		//내 체력
@@ -93,6 +95,25 @@ void move(void)		//이동함수
 			x++;
 			printf("\n나의 위치: (%d,%d)\n", x,y);
 		}
+		else if(input==6)
+		{
+			battle();
+		}
+		else if(input==10)
+		{
+			treasure();
+			continue;
+		}
+		else if(input==2)
+		{
+			getBluePotion();
+			continue;
+		}
+		else if(input==18)
+		{
+			getRedPotion();
+			continue;
+		}
 		else
 			continue;
 
@@ -113,6 +134,7 @@ void battle(void)	//배틀함수
 	int mon_attack;	//몬스터 공격
 	int counterattack; //공격 방어 성공 확률
 	int mon_HP=3;	//몬스터 체력
+	char input;
 
 	printf("\n헐 슬라임이다!!!!\n\n");
 
@@ -128,13 +150,13 @@ void battle(void)	//배틀함수
 
 		if(mon_HP==0)		//몬스터 체력이 0되면 빠져나옴
 		{
-			printf("\n***이겼습니다***\n\n");
+			printf("\n*******이겼습니다*******\n\n");
 			Sleep(700);
 			system("cls");
 			break;
 		}
 
-		printf("공격(1) 방어(2) 인벤토리(3) 선택");
+		printf("공격(1) 방어(2) 인벤토리(3) 치트(4) 선택");
 		scanf("%d", &select);fflush(stdin);
 
 		mon_attack=rand()%2+1;		//1 또는 2
@@ -184,6 +206,23 @@ void battle(void)	//배틀함수
 		{
 			inventory();
 		}
+		else if(select==4)
+		{
+			input= getch();
+			if(input==8)
+			{
+				pc_HP=30;
+				printf("체력 만땅\n");
+			}
+			else if(input==23)
+			{
+				mon_HP=0;
+			}
+			else if(input==12)
+			{
+				game_over();
+			}
+		}
 	}
 }
 void game_over(void) //게임 오버 함수
@@ -193,41 +232,16 @@ void game_over(void) //게임 오버 함수
 }
 void treasure(void)		//보물상자 함수
 {	
-	int chance,potion;int i=1;
+	int chance;
 
 
 	chance= rand()%2+1;	//1,2
 
 	if(chance==1)
-	{
-		potion=red_potion;
-		printf("red potion 발견\n");
-	}
+		getRedPotion();
 	else
-	{
-		potion=blue_potion; 
-		printf("blue potion 발견\n");
-	}
-
-	while(1)
-	{	
-		if(item[0]==0)
-		{
-			item[0]=potion;
-			break;
-		}
-		else if(item[i-1]!=0 &&item[i]==0)
-		{
-			item[i]=potion; 
-			break;
-		}
-		else if(i>10)
-		{
-			printf("인벤토리 공간부족\n");
-			break;
-		}
-		i++;
-	}
+		getBluePotion();
+	
 }
 void inventory(void)	//인벤토리 함수
 {	
@@ -259,7 +273,7 @@ void inventory(void)	//인벤토리 함수
 	}
 	printf("\n");
 	printf("-------------------------\n");
-	printf("인벤토리 닫기:I \n");
+	printf("인벤토리 닫기:I  레드포션 쓰기:r\n\n");
 	
 
 	while(1)
@@ -285,6 +299,7 @@ void inventory(void)	//인벤토리 함수
 					item[i]=0;
 					HP_recover(10);
 					system("cls");
+					printf("\n");
 					printf("--------INVENTORY--------\n\n");
 					emptyCount=0;
 
@@ -309,7 +324,7 @@ void inventory(void)	//인벤토리 함수
 					}
 					printf("\n");
 					printf("-------------------------\n");
-					printf("인벤토리 닫기:I \n");
+					printf("인벤토리 닫기:I  레드포션 쓰기:r\n");
 					printf("체력 회복 완료----현재 체력: %d\n", pc_HP);
 					break;
 				}
@@ -330,5 +345,55 @@ void HP_recover(int HP)	//체력 회복 함수
 	if(pc_HP>30)
 	{
 		pc_HP = 30;
+	}
+}
+void getRedPotion(void)
+{
+	int i=0;
+	printf("red potion 발견\n");
+
+	while(1)
+	{	
+		if(item[0]==0)
+		{
+			item[0]=101;
+			break;
+		}
+		else if(item[i-1]!=0 &&item[i]==0)
+		{
+			item[i]=101; 
+			break;
+		}
+		else if(i>10)
+		{
+			printf("인벤토리 공간부족\n");
+			break;
+		}
+		i++;
+	}
+}
+void getBluePotion(void)
+{
+	int i=0;
+	printf("blue potion 발견\n");
+
+	while(1)
+	{	
+		if(item[0]==0)
+		{
+			item[0]=102;
+			break;
+		}
+		else if(item[i-1]!=0 &&item[i]==0)
+		{
+			item[i]=102; 
+			break;
+		}
+		else if(i>10)
+		{
+			printf("인벤토리 공간부족\n");
+			break;
+		}
+		i++;
 	}
 }
