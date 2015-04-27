@@ -20,7 +20,7 @@ void treasure(void);	//보물상자 함수
 void inventory(void);	//인벤토리 함수
 void HP_recover(int HP);//체력 회복 함수
 
-int item[5]={0};	//인벤토리 배열
+int item[10]={0};	//인벤토리 배열
 int pc_HP=30;		//내 체력
 
 int main(void)
@@ -221,7 +221,7 @@ void treasure(void)		//보물상자 함수
 			item[i]=potion; 
 			break;
 		}
-		else if(i>4)
+		else if(i>10)
 		{
 			printf("인벤토리 공간부족\n");
 			break;
@@ -238,7 +238,7 @@ void inventory(void)	//인벤토리 함수
 	printf("--------INVENTORY--------\n\n");
 	emptyCount=0;
 
-	for(i=0;i<=4;i++)
+	for(i=0;i<10;i++)
 	{	
 		switch(item[i])
 		{	
@@ -253,7 +253,7 @@ void inventory(void)	//인벤토리 함수
 		}
 	}
 
-	if(emptyCount==5)
+	if(emptyCount==10)
 	{
 		printf("인벤토리가 비어있습니다.\n");
 	}
@@ -272,10 +272,10 @@ void inventory(void)	//인벤토리 함수
 			break;
 		}
 		else if(input == 'r')
-		{
+		{	
 			while(1)
 			{
-				if(i>4)
+				if(i>9)
 				{
 					printf("red potion 없음\n");
 					break;
@@ -284,6 +284,33 @@ void inventory(void)	//인벤토리 함수
 				{
 					item[i]=0;
 					HP_recover(10);
+					system("cls");
+					printf("--------INVENTORY--------\n\n");
+					emptyCount=0;
+
+					for(i=0;i<10;i++)
+					{	
+						switch(item[i])
+						{	
+							case 101:
+								printf("red potion\n"); 
+								break;
+							case 102:
+								printf("blue potion\n");	
+								break;
+							case 0:
+								emptyCount++;
+						}
+					}
+
+					if(emptyCount==10)
+					{
+						printf("인벤토리가 비어있습니다.\n");
+					}
+					printf("\n");
+					printf("-------------------------\n");
+					printf("인벤토리 닫기:I \n");
+					printf("체력 회복 완료----현재 체력: %d\n", pc_HP);
 					break;
 				}
 				i++;
@@ -299,7 +326,7 @@ void inventory(void)	//인벤토리 함수
 void HP_recover(int HP)	//체력 회복 함수
 {
 	pc_HP += HP;
-	printf("HP %d 회복\n", HP);
+	
 	if(pc_HP>30)
 	{
 		pc_HP = 30;
