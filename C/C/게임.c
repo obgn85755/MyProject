@@ -8,8 +8,8 @@
 #define RIGHT  77      // 우측방향키
 #define UP     72      // 위쪽방향키
 #define DOWN   80      // 아래방향키
-#define red_potion 101	
-#define blue_potion 102
+#define red_potion 101	//레드 포션
+#define blue_potion 102	//블루 포션
 
 
 void opening(void);		//게임 오프닝 함수
