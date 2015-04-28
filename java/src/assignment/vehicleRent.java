@@ -29,10 +29,10 @@ public class vehicleRent extends JFrame{
 			JLabel la6 = new JLabel("대여가능");
 			JLabel la7 = new JLabel(" ");
 			JLabel la8 = new JLabel(" ");
-			
+			JList list = new JList();
 			JButton b1=new JButton("차량구매");
 			JButton b2=new JButton("빌려주기");
-			JButton b3=new JButton("돌려주기");
+			JButton b3=new JButton("돌려받기");
 			
 			
 			JTextField tf1=new JTextField();
@@ -42,14 +42,21 @@ public class vehicleRent extends JFrame{
 			la1.setSize(150,50);
 			p1.setLocation(200,15);
 			p1.setSize(300,50);
+			list.setLocation(15,70);
+			list.setSize(150,200);
 			p2.setLocation(200,70);
 			p2.setSize(300,50);
 			la2.setLocation(200,140);
 			la2.setSize(300,150);
 			
+			MDActionListener listener = new MDActionListener();
+			b1.addActionListener(listener);
+			b2.addActionListener(listener);
+			b3.addActionListener(listener);
 			
 			contentPane.add(la1);
 			contentPane.add(p1);
+			contentPane.add(list);
 			contentPane.add(p2);
 			contentPane.add(la2);
 			p1.add(b1);
@@ -69,5 +76,15 @@ public class vehicleRent extends JFrame{
 	public static void main(String[] args) {
 		new vehicleRent();
 	}
+
+}
+class MDActionListener implements ActionListener
+{
+
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
+	
 
 }
