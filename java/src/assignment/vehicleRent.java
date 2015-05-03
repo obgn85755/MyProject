@@ -88,6 +88,7 @@ public class vehicleRent extends JFrame{
 	 		JButton b = (JButton)e.getSource();
 	 		carIn.getImage().flush();
  			carOut.getImage().flush();
+ 			
 	 		if(b.getText().equals("차량구매")){			 				 				 			
 	 			la2.setIcon(carIn);
 	 			map.put( tf1.getText(),new Car(tf1.getText(),Integer.parseInt(tf2.getText())));
