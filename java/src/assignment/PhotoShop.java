@@ -77,6 +77,7 @@ public class PhotoShop extends JFrame{
 			String filePath = fchooser.getSelectedFile().getPath();
 			imageLabel.setIcon(new ImageIcon(filePath));
 			imageLabel.setSize(300,300);
+			textLabel.setText("");
 		}
 		
 	}
@@ -103,7 +104,7 @@ public class PhotoShop extends JFrame{
 			
 			if(b.getText().equals("Insert Text")){				
 				textLabel.setText(tf.getText());	
-				panel.setVisible(false);
+				panel.setVisible(false);			
 			}
 		}
 	}
